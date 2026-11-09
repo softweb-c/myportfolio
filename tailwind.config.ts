@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   darkMode: "class",
@@ -56,20 +57,22 @@ const config: Config = {
     },
   },
   plugins: [
-    function({ addUtilities }: { addUtilities: (utilities: Record<string, any>, variants?: string[]) => void }) {
+    plugin(function ({ addUtilities }) {
       const newUtilities = {
-        '.text-cobalt': { color: 'rgb(var(--cobalt))' },
-        '.text-lime': { color: 'rgb(var(--lime))' },
-        '.text-blue-grey': { color: 'rgb(var(--blue-grey))' },
-        '.text-soft-white': { color: 'rgb(var(--soft-white))' },
-        '.bg-cobalt': { backgroundColor: 'rgb(var(--cobalt))' },
-        '.bg-lime': { backgroundColor: 'rgb(var(--lime))' },
-        '.bg-midnight': { backgroundColor: 'rgb(var(--midnight))' },
-        '.bg-midnight-elevated': { backgroundColor: 'rgb(var(--midnight-elevated))' },
-        '.bg-deep-navy': { backgroundColor: 'rgb(var(--deep-navy))' },
+        ".text-cobalt": { color: "rgb(var(--cobalt))" },
+        ".text-lime": { color: "rgb(var(--lime))" },
+        ".text-blue-grey": { color: "rgb(var(--blue-grey))" },
+        ".text-soft-white": { color: "rgb(var(--soft-white))" },
+        ".bg-cobalt": { backgroundColor: "rgb(var(--cobalt))" },
+        ".bg-lime": { backgroundColor: "rgb(var(--lime))" },
+        ".bg-midnight": { backgroundColor: "rgb(var(--midnight))" },
+        ".bg-midnight-elevated": { backgroundColor: "rgb(var(--midnight-elevated))" },
+        ".bg-deep-navy": { backgroundColor: "rgb(var(--deep-navy))" },
       };
-      addUtilities(newUtilities, ['responsive']);
-    },
+
+      addUtilities(newUtilities);
+    }),
   ],
 };
+
 export default config;
